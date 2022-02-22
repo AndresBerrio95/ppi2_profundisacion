@@ -1,9 +1,9 @@
-package co.com.poli.userservice.controller;
+package co.com.poli.moviesservice.controller;
 
-import co.com.poli.userservice.entities.User;
-import co.com.poli.userservice.helper.ResponseBuilder;
-import co.com.poli.userservice.model.Response;
-import co.com.poli.userservice.service.UserService;
+import co.com.poli.moviesservice.entities.Movie;
+import co.com.poli.moviesservice.helper.ResponseBuilder;
+import co.com.poli.moviesservice.model.Response;
+import co.com.poli.moviesservice.service.MoviesService;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,49 +20,51 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/movies")
 @RequiredArgsConstructor
-public class UsersController {
+public class MoviesController {
 
-  private final UserService usersService;
+  private final MoviesService moviesService;
   private final ResponseBuilder builder;
 
   @PostMapping
-  public Response save(@Valid @RequestBody User user, BindingResult result){
+  public Response save(@Valid @RequestBody Movie movie, BindingResult result){
     if (result.hasErrors()){
       return builder.failed(formatMessage(result));
     }
-    usersService.save(user);
-    return builder.success(user);
+    moviesService.save(movie);
+    return builder.success(movie);
   }
 
   @DeleteMapping("/{id}")
   public Response delete(@PathVariable("id") Long id){
-    User user = usersService.findById(id);
-    if (user == null){
-      return builder.failed("No found user");
+
+    Movie movie = moviesService.findById(id);
+    if (movie == null){
+      return builder.failed("No found movie");
     }
-    usersService.delete(user);
-    return builder.success(user);
+    moviesService.delete(movie);
+    return builder.success(movie);
   }
 
   @GetMapping
   public Response findAll(){
-    List<User> user = usersService.findAll();
-    if (user.isEmpty()){
-      return builder.failed("Users is empty");
+    List<Movie> movie = moviesService.findAll();
+    if (movie.isEmpty()){
+      return builder.failed("Movie is empty");
     }
-    return builder.success(user);
+    return builder.success(movie);
   }
 
   @GetMapping("/{id}")
   public Response findById(@PathVariable("id") Long id){
-    User user = usersService.findById(id);
-    if (user == null){
-      return builder.failed("No found user");
+    Movie movie = moviesService.findById(id);
+    if (movie == null){
+      return builder.failed("No found movie");
     }
-    return builder.success(user);
+    return builder.success(movie);
   }
+
 
   private  List<Map<String,String>> formatMessage(BindingResult result){
     List<Map<String,String>> errors = result.getFieldErrors().stream()
@@ -73,4 +75,5 @@ public class UsersController {
         }).collect(Collectors.toList());
     return errors;
   }
+
 }

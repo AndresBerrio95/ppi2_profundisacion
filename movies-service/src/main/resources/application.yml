@@ -10,12 +10,9 @@ spring:
       enabled: true
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:movie:movieBD;
+    url: jdbc:h2:mem:movieBD;
     platform: h2
     username: sa
     password:
   jpa:
-    #database-platform: org.hibernate.dialect.H2Dialect
-    hibernate:
-      ddl-auto: create-drop
-    generate-ddl: true
+    database-platform: org.hibernate.dialect.H2Dialect

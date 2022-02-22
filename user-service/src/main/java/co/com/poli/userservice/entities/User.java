@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -28,8 +29,10 @@ public class User {
   @Column(name = "id", updatable = false, nullable = false, unique = true)
   @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
   private Long id;
+  @NotBlank(message = "Nombre no debe estar en blanco")
   @Column(name = "name")
   private String name;
+  @NotBlank(message = "Apellido no debe estar en blanco")
   @Column(name = "lastname")
   private String lastname;
 
