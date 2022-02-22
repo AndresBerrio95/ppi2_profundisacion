@@ -21,7 +21,7 @@ public class UserRepositoryMockTest {
         .lastname("Perez")
         .build();
     userRepository.save(user);
-    List<User> users = userRepository.findAll(user);
-    Assertions.assertThat(users.size()).isEqualTo(3);
+    List<User> users = userRepository.findAll();
+    Assertions.assertThat(users.size()).isEqualTo(4);
   }
 }

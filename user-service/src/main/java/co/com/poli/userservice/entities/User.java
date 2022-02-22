@@ -1,5 +1,6 @@
 package co.com.poli.userservice.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,7 +26,7 @@ public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id", updatable = false, nullable = false, unique = true)
-  //@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+  @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
   private Long id;
   @Column(name = "name")
   private String name;
