@@ -5,4 +5,5 @@ include 'movies-service'
 include 'showtimes-service'
 include 'bookings-service'
 include 'config-service'
+include 'register-service'
 
