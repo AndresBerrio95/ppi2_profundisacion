@@ -1,9 +1,11 @@
 rootProject.name = 'ppimultiproject'
 
 include 'user-service'
-include 'movies-service'
-include 'showtimes-service'
-include 'bookings-service'
+include 'movie-service'
+include 'showtime-service'
+include 'booking-service'
 include 'config-service'
 include 'register-service'
+include 'gateway-service'
+include 'admin-service'
 

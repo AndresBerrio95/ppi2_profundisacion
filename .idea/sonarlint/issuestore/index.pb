@@ -87,5 +87,3 @@ M
 bookings-service/build.gradle,8\a\8a6cbc36b5a972a7905f2aa5cdd675f77bf61c71
 N
 showtimes-service/build.gradle,c\7\c71cd15b33c491ccb79ef1a2d52f9e1d3bbafe02
-„
-Tconfig-service/src/main/java/co/com/poli/serviceconfig/ServiceConfigApplication.java,6\8\6860ae632565b4bf922e7e05202769bb291553d2
